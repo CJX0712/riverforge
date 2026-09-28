@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+.ruff_cache/
+.pytest_cache/
+build/
+dist/
+*.so
+.DS_Store
+push_gitdata.py

@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "riverforge"
+version = "0.1.0"
+description = "世界顶级在线学习（流式/概念漂移）系统 — 作者 晨星"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "晨星" }]
+dependencies = [
+    "numpy>=2.0",
+    "scipy>=1.10",
+    "scikit-learn>=1.4",
+    "river>=0.21",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+riverforge = "riverforge.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["riverforge*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+filterwarnings = [
+    "ignore::FutureWarning",   # sklearn PassiveAggressiveClassifier 弃用告警
+    "ignore::UserWarning",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+ignore = ["E731"]
